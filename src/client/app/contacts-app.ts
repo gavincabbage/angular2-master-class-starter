@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {ContactHeaderComponent} from './contact-header-component/contact-header-component';
 import {Contact} from './models/contact';
-import {CONTACT_DATA} from './data/contact-data';
+import {ContactsService} from './contacts-service/contacts-service';
 
 @Component({
     selector: 'contacts-app',
@@ -14,8 +14,12 @@ import {CONTACT_DATA} from './data/contact-data';
             </li>
         </ul>`,
     styleUrls: ['app/contacts-app.css'],
-    directives: [ContactHeaderComponent]
+    directives: [ContactHeaderComponent],
+    providers: [ContactsService]
 })
 export class ContactsApp {
-    contacts:Array<Contact> = CONTACT_DATA;
+    contacts:Array<Contact>;
+    constructor(contactsService:ContactsService) {
+        this.contacts = contactsService.getContacts();
+    }
 }
