@@ -5,6 +5,8 @@ import {Contact} from './models/contact';
 import {ContactsService} from './contacts-service/contacts-service';
 import {ContactsListComponent} from './contacts-list-component/contacts-list-component';
 import {ContactDetailComponent} from './contact-detail-component/contact-detail-component';
+import {ContactEditorComponent} from './contact-editor-component/contact-editor-component';
+import {CloneService} from './clone-service/clone-service';
 
 @Component({
     selector: 'contacts-app',
@@ -14,7 +16,7 @@ import {ContactDetailComponent} from './contact-detail-component/contact-detail-
     `,
     styleUrls: ['app/contacts-app.css'],
     directives: [ContactHeaderComponent, ROUTER_DIRECTIVES],
-    providers: [ContactsService, ROUTER_PROVIDERS]
+    providers: [ContactsService, ROUTER_PROVIDERS, CloneService]
 })
 @RouteConfig([
     {
@@ -26,6 +28,11 @@ import {ContactDetailComponent} from './contact-detail-component/contact-detail-
         path: '/contacts/:id',
         component: ContactDetailComponent,
         name: 'ContactDetail'
+    },
+    {
+        path: '/contacts/:id/edit',
+        component: ContactEditorComponent,
+        name: 'ContactEditor'
     }
 ])
 export class ContactsApp {
