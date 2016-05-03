@@ -6,9 +6,9 @@ module.exports = function(defaults) {
   var app = new Angular2App(defaults, {
     vendorNpmFiles: [
       'materialize-css/bin/materialize.css',
-      'materialize-css/font/roboto/Roboto-Regular.woff2',
-      'materialize-css/font/roboto/Roboto-Regular.woff',
-      'materialize-css/font/roboto/Roboto-Regular.ttf'
+      'materialize-css/fonts/roboto/Roboto-Regular.woff2',
+      'materialize-css/fonts/roboto/Roboto-Regular.woff',
+      'materialize-css/fonts/roboto/Roboto-Regular.ttf'
     ]
   });
   return app.toTree();
