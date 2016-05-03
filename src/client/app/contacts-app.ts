@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {ContactHeaderComponent} from './contact-header-component/contact-header-component';
 import {Contact} from './models/contact';
 import {ContactsService} from './contacts-service/contacts-service';
@@ -17,9 +17,14 @@ import {ContactsService} from './contacts-service/contacts-service';
     directives: [ContactHeaderComponent],
     providers: [ContactsService]
 })
-export class ContactsApp {
+export class ContactsApp implements OnInit {
+
     contacts:Array<Contact>;
-    constructor(contactsService:ContactsService) {
-        this.contacts = contactsService.getContacts();
+
+    constructor(private contactsService:ContactsService) {}
+
+    ngOnInit() {
+        this.contacts = this.contactsService.getContacts();
     }
+
 }
